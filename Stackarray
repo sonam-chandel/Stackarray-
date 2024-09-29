@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <stdlib.h> 
+
+#define MAX 10
+int stack[MAX], top = -1;
+
+void push()
+{
+    int x;
+    if (top == MAX - 1)
+    {
+        printf("Stack is overflow\n");
+    }
+    else
+    {
+        printf("Enter number you want to push: ");
+        scanf("%d", &x);
+        top++;
+        stack[top] = x;
+    }
+}
+void pop()
+{
+    if (top == -1)
+    { 
+        printf("Stack underflow\n");
+    }
+    else
+    {
+        int y = stack[top];
+        top--;
+        printf("Popped element is: %d\n", y);
+    }
+}
+
+void print()
+{
+    int i;
+    for (i = top; i >= 0; i--)
+    {
+        printf("%d\n", stack[i]);
+    }
+}
+
+int main()
+{
+    int choice;
+    char ch;
+
+    do
+    {
+        printf("1: Push, 2: Pop,3:print, 0: Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            push();
+            break;
+        case 2:
+            pop();
+            break;
+
+        case 3:
+            print();
+            break;
+        case 0:
+            exit(0);
+        default:
+            printf("Wrong input\n");
+            break;
+        }
+
+        printf("Press y to continue or any other key to exit: ");
+        scanf(" %c", &ch);
+
+    } while (ch == 'y' || ch == 'Y'); 
+
+    return 0;
+}
